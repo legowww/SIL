@@ -19,5 +19,8 @@ Creating shared instance of singleton bean 'orderServiceImpl'
 Autowiring by type from bean name 'orderServiceImpl' via constructor to bean named 'memoryMemberRepository'
 Autowiring by type from bean name 'orderServiceImpl' via constructor to bean named 'rateDiscountPolicy'
 ```
+---
+`@Configuration` 
 
+1. 스프링 빈 객체에 메서드 방식으로 의존관계를 주입할 때 주입하는 객체를 새롭게 생성하지 않고 스프링 컨테이너에 등록된 스프링 빈이 주입되게끔 해준다. 사용하지 않고 `@Bean`만 사용하여 빈을 등록해도 싱글톤 빈으로 잘 등록된다. 하지만 해당 스프링 빈의 의존관계가 메서드 호출로 주입될 경우 스프링 컨테이너에 등록된 싱글톤 객체가 주입되지 않는다.
 
