@@ -5,7 +5,6 @@
 ```python
 import sys
 
-
 def dfs(x, y):
     global width
     if not (0 <= x < n and 0 <= y < m):
@@ -33,8 +32,6 @@ for i in range(n):
             answer = max(answer, width)
             cnt += 1
             width = 0
-
-
 print(cnt)
 print(answer)
 ```
