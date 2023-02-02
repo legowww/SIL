@@ -1,37 +1,5 @@
 # DFS
 
-### 1-A. 하나로 묶인 집합의 수와 집합별 넓이 구하기
-[백준 1926번](https://www.acmicpc.net/problem/1926)
-```python
-import sys
+### 1-A. 집합(이동가능한 영역)의 개수와 집합별 넓이 구하기
+[백준 2583번: 영역 구하기](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-2583%EB%B2%88-%EC%98%81%EC%97%AD-%EA%B5%AC%ED%95%98%EA%B8%B0)
 
-def dfs(x, y):
-    global width
-    if not (0 <= x < n and 0 <= y < m):
-        return
-
-    if graph[x][y] == 1:
-        graph[x][y] = 'x'
-        width += 1
-        dfs(x-1, y)
-        dfs(x+1, y)
-        dfs(x, y-1)
-        dfs(x, y+1)
-
-sys.setrecursionlimit(500000)
-n, m = map(int, sys.stdin.readline().rstrip().split())
-graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(n)]
-cnt = 0
-answer = 0
-width = 0
-
-for i in range(n):
-    for j in range(m):
-        if graph[i][j] == 1:
-            dfs(i, j)
-            answer = max(answer, width)
-            cnt += 1
-            width = 0
-print(cnt)
-print(answer)
-```
