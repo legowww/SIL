@@ -9,5 +9,8 @@
 
 
 
-- JDK 동적 프록시: 인터페이스에만 프록시 적용이 가능하다. `InvocationHandler`를 구현하여 사용한다.
-- CGLIB: 구체 클래스와 인터페이스 모두 프록시 적용이 가능하다. `MethodInterceptor`를 구현하여 사용한다.
+- JDK 동적 프록시: 인터페이스에만 프록시 적용이 가능하다. `InvocationHandler`를 구현하여 사용한다. 생성된 프록시는 `com.sun.proxy.$Proxy1
+`형식의 클래스 이름을 가진다.
+
+- CGLIB: 구체 클래스와 인터페이스 모두 프록시 적용이 가능하다. `MethodInterceptor`를 구현하여 사용한다. 생성된 프록시는 `대상클래스$$EnhancerByCGLIB$$임의코드`
+형식의 클래스 이름을 가진다.
