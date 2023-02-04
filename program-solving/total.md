@@ -9,7 +9,7 @@
 def gcd(a,b):
     while b:
         a, b = b, a % b
-		return a
+	return a
 
 # N개의 수에 대한 최대공약수를 구하기
 # gcd(arrayA=[14, 35, 119]) => 7  
@@ -32,11 +32,11 @@ for char in s:
         stack.append(char)
     else:
         # 로직 작성
-				temp_str = ''
+	temp_str = ''
         while stack and stack[-1] != '[':  # 빈 리스트 검사와 마지막 참조 또한 자주 사용 
             temp_str += stack.pop()
-				temp_str = temp_str[::-1]  # 스택이므로 역순으로 변환
-				stack.pop()  # '[' 제거
+	temp_str = temp_str[::-1]  # 스택이므로 역순으로 변환
+	stack.pop()  # '[' 제거
 """
 1. ['a', '[', 'b', 'c', 'd']
 2. 현재 char == ']'
@@ -75,7 +75,7 @@ for end in range(1, len(s)+1):
 	d[s[end-1]] += 1
 
 	if 조건:
-		start += 1
+	    start += 1
 ```
 
 [[리트코드] 424. Longest Repeating Character Replacement (velog.io)](https://velog.io/@legowww/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C-424.-Longest-Repeating-Character-Replacement) 
