@@ -78,5 +78,6 @@ public class AspectV5OrderNonStatic {
 ```
 어드바이스가 작동한다. outer class, inner class 둘 다 @Conponent 가 필수적으로 붙어있어야 inner class 들이 정상적으로 스프링 빈에 등록된다.
 
+---
 
-> 결론: static class 는 outer class 없이도 생성할 수 있기 때문에, inner class 로 스프링 빈 등록을 하고 싶다면 꼭 static 속성을 붙여주자.
+TEST 결론: static class 는 outer class 없이도 생성할 수 있기 때문에, inner class 로 스프링 빈 등록을 하고 싶다면 tatic 속성을 붙이는 것이 편리하다.
