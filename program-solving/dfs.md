@@ -13,8 +13,6 @@ KEY 값의 방문 여부를 나타내는 visited 가 존재한다.
 ```
 [[백준 9466번] 텀 프로젝트](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-9466%EB%B2%88-%ED%85%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
 
-[[프로그래머스] 혼자 놀기의 달인](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%98%BC%EC%9E%90-%EB%86%80%EA%B8%B0%EC%9D%98-%EB%8B%AC%EC%9D%B8) 3번 코드
-
 ```
 시간 복잡도가 여유로울 것 같으면 아래의 풀이들도 괜찮다.
 ```
