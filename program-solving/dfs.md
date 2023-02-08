@@ -4,4 +4,23 @@
 [백준 2583번: 영역 구하기](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-2583%EB%B2%88-%EC%98%81%EC%97%AD-%EA%B5%AC%ED%95%98%EA%B8%B0)
 
 
+### 2. Cycle
+```
+KEY 값의 방문 여부를 나타내는 visited 가 존재한다. 
+싸이클 문제는 임의의 KEY 값을 한 번만 방문해도 해당 KEY 의 싸이클 포함/미포함 여부를 파악할 수 있게 설계되었다.
+
+주어진 N이 빠듯한 경우 이러한 특성을 살리는 풀이를 하자.
+```
+[[백준 9466번] 텀 프로젝트](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-9466%EB%B2%88-%ED%85%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)
+
+[[프로그래머스] 혼자 놀기의 달인](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%98%BC%EC%9E%90-%EB%86%80%EA%B8%B0%EC%9D%98-%EB%8B%AC%EC%9D%B8) 3번 코드
+
+```
+시간 복잡도가 여유로울 것 같으면 아래의 풀이들도 괜찮다.
+```
+[[백준 2668번] 숫자 고르기](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-2668%EB%B2%88-%EC%88%AB%EC%9E%90-%EA%B3%A0%EB%A5%B4%EA%B8%B0)
+
+[[프로그래머스] 혼자 놀기의 달인](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%98%BC%EC%9E%90-%EB%86%80%EA%B8%B0%EC%9D%98-%EB%8B%AC%EC%9D%B8)
+
+
 
