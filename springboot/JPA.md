@@ -7,7 +7,7 @@ JPA의 성능 최적화 기능
 
 
 
-## CASCADE
+## CASCADE PERSIST
 ```java
 //Parent 는 @OneToMany 로 Child 필드에 CASCADE 조건을 적용해놓은 상태이다.
 
@@ -56,3 +56,21 @@ ID  	NAME  	PARENT_ID
 CASCADE 의 적용대상인 child 객체들은 영속성 컨텍스트에 들어가 커밋되어 DB에 저장되는 것은 둘 다 동일하지만, child 객체들은 parent 객체의 id 값을 수동으로 넣지 않으면
 알 수 없다.
 
+## CASCADE DELETE
+```java
+Hibernate: 
+    /* delete hellojpa.example.cascade.Child */ delete 
+        from
+            Child 
+        where
+            id=?
+Hibernate: 
+    /* delete hellojpa.example.cascade.Parent */ delete 
+        from
+            Parent 
+        where
+            id=?
+```
+@ManyToOne 즉, 외래키를 가진 Child(자식 테이블=참조하는 쪽)이 먼저 제거된 후, Parent(부모 테이블=참조되는 쪽)이 제거된다. 
+
+무결성 제약조건이 적용된다.
