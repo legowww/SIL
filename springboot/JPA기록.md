@@ -10,7 +10,80 @@ JPA의 성능 최적화 기능
 - ToOne 관계는 조인해도 데이터 row 수가 증가하지 않는다.
 - ToMany(1:N) 관계는 조인하면 row 수가 증가한다.
 
+```java
+@RestController
+@RequiredArgsConstructor
+public class OrderApiController {
 
+    private final OrderRepository orderRepository;
+    private final OrderQueryRepository orderQueryRepository;
+    ...
+    
+    /**
+     * V3.1 엔티티를 조회해서 DTO로 변환 페이징 고려
+     * - ToOne 관계만 우선 모두 페치 조인으로 최적화
+     * - 컬렉션 관계는 hibernate.default_batch_fetch_size, @BatchSize로 최적화
+     *   fetch join 과 배치사이즈는 엔티티를 조회할 때 가능합니다.
+     */
+    //offset 이 1이면 첫번째는 날리고 2번째부터 조회
+    @GetMapping("/api/v3.1p/orders")
+    public List<OrderDto> ordersV3_page(
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
+            @RequestParam(value = "limit", defaultValue = "100") int limit) {
+        List<Order> orders = orderRepository.findAllWithMemberDelivery(offset, limit); //toOne 관계는 페치조인으로 한번에 가져와라 (페이징 해도 영향이 없기 때문에)
+
+        //현재상황: orders 에는 order_id 4번과 11번이 존재한다.
+        //배치사이즈를 사용하면(100 기준 in (x, x, x... 100개) )
+        //[OneToMany]배치사이즈 1번 작동: where orderItems0_.order_id in (4, 11);  인쿼리로 한번에 가져온다.
+        //[ManyToOne]배치사이즈 2번 작동: where item0_.item_id in (2, 3, 9, 10);
+
+        //즉 배치사이즈는 in 쿼리로 N 을 한번에 가져오는 역할을 한다.
+        List<OrderDto> collect = orders.stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList());
+        return collect;
+    }
+
+    @Data
+    static class OrderDto {
+
+        private Long orderId;
+        private String name;
+        private LocalDateTime orderDate;
+        private OrderStatus orderStatus;
+        private Address address;
+        //엔티티인 OrderItem 대신 DTO 로 변환하여 API 에 노출하고 싶은 값만 사용한다.
+        private List<OrderItemDto> orderItems;
+
+        //초기화 수행
+        public OrderDto(Order order) {
+            orderId = order.getId();
+            name = order.getMember().getName(); //LAZY 객체 프록시 초기화 -> v3 부터는 페치조인으로 가져온 상태
+            orderDate = order.getOrderDate();
+            orderStatus = order.getStatus();
+            address = order.getDelivery().getAddress(); //LAZY 객체 프록시 초기화 -> v3 부터는 페치조인으로 가져온 상태
+            orderItems = order.getOrderItems().stream()
+                    .map(orderItem -> new OrderItemDto(orderItem)) //배치사이즈 쿼리 실행: where orderItems0_.order_id in (4, 11)
+                    .collect(Collectors.toList());
+        }
+    }
+
+    @Getter
+    static class OrderItemDto {
+
+        private String itemName; //상품 명
+        private int count;      //주문 가격
+        private int orderPrice; //주문 수량
+
+        //orderItem 에 노출하고 싶은 항목을 작성
+        public OrderItemDto(OrderItem orderItem) {
+            itemName = orderItem.getItem().getName(); //배치사이즈 쿼리 실행: where item0_.item_id in (2, 3, 9, 10);
+            orderPrice = orderItem.getOrderPrice();
+            count = orderItem.getCount();
+        }
+    }
+}
+```
 ## CASCADE PERSIST
 ```java
 //Parent 는 @OneToMany 로 Child 필드에 CASCADE 조건을 적용해놓은 상태이다.
