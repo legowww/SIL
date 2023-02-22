@@ -91,8 +91,35 @@ https://www.acmicpc.net/problem/15664
 
 ---
 ### 6. 순열
+```python
+import sys
+from collections import defaultdict
+
+
+def dfs(cnt, path):
+    if cnt == m and path:
+        result.add(tuple(path))
+        return
+
+    for i in range(len(arr)):
+        if not visited[i]:
+            visited[i] = True
+            dfs(cnt+1, path + [arr[i]])
+            visited[i] = False
+
+
+result = set()
+n, m = map(int, sys.stdin.readline().rstrip().split())
+arr = list(map(int, sys.stdin.readline().rstrip().split()))
+visited = defaultdict(bool)
+
+dfs(0, [])
+for i in sorted(result):
+    print(*i)
+```
 [[백준 15663번] N과 M(9)](https://velog.io/@legowww/%EB%B0%B1%EC%A5%B0-15663%EB%B2%88-N%EA%B3%BC-M9)
 
+---
 ### 7. 조합
 ```python
 import itertools
@@ -122,4 +149,9 @@ for i in sorted(result):
     print(*i)
 
 print(list(itertools.combinations(arr, m)))
+"""
+4개의 수를 입력받아 2개를 선택
+4 2 
+1 2 3 4
+"""
 ```
