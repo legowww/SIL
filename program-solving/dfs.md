@@ -89,3 +89,5 @@ def dfs(cnt, idx, path):
 `arr`이 내림차순으로 정렬일 경우에만 사용할 수 있다. path 는 감소하지 않는 형태의 수열을 가진다.
 https://www.acmicpc.net/problem/15664
 
+### 6. 순열
+[[백쥰 15663번] N과 M(9)](https://velog.io/@legowww/%EB%B0%B1%EC%A5%B0-15663%EB%B2%88-N%EA%B3%BC-M9)
