@@ -89,5 +89,37 @@ def dfs(cnt, idx, path):
 `arr`이 내림차순으로 정렬일 경우에만 사용할 수 있다. path 는 감소하지 않는 형태의 수열을 가진다.
 https://www.acmicpc.net/problem/15664
 
+---
 ### 6. 순열
 [[백준 15663번] N과 M(9)](https://velog.io/@legowww/%EB%B0%B1%EC%A5%B0-15663%EB%B2%88-N%EA%B3%BC-M9)
+
+### 7. 조합
+```python
+import itertools
+import sys
+from collections import defaultdict
+
+
+def dfs(cnt, idx, path):
+    if cnt == m and path:
+        result.add(tuple(path))
+        return
+
+    for i in range(idx, len(arr)):
+        if not visited[i]:
+            visited[i] = True
+            dfs(cnt+1, i+1, path + [arr[i]])
+            visited[i] = False
+
+
+result = set()
+n, m = map(int, sys.stdin.readline().rstrip().split())
+arr = list(map(int, sys.stdin.readline().rstrip().split()))
+visited = defaultdict(bool)
+
+dfs(0, 0, [])
+for i in sorted(result):
+    print(*i)
+
+print(list(itertools.combinations(arr, m)))
+```
