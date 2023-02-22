@@ -78,4 +78,14 @@ KEY 값의 방문 여부를 나타내는 visited 가 존재한다.
 
 [[프로그래머스] 혼자 놀기의 달인](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%98%BC%EC%9E%90-%EB%86%80%EA%B8%B0%EC%9D%98-%EB%8B%AC%EC%9D%B8)
 
+### 5. 비내림차순 증가
+```python
+def dfs(cnt, idx, path):
+    ...
+    for i in range(idx, N+1):
+        dfs(cnt+1, i+1, path + [arr[i]]
+
+```
+`arr`이 내림차순으로 정렬일 경우에만 사용할 수 있다. path 는 감소하지 않는 형태의 수열을 가진다.
+https://www.acmicpc.net/problem/15664
 
