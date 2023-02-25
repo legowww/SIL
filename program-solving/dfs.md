@@ -122,14 +122,13 @@ for i in sorted(result):
 ---
 ### 7. 조합
 ```python
-import itertools
 import sys
 from collections import defaultdict
 
 
 def dfs(cnt, idx, path):
-    if cnt == m and path:
-        result.add(tuple(path))
+    if cnt == 6:
+        print(*path)
         return
 
     for i in range(idx, len(arr)):
@@ -139,19 +138,14 @@ def dfs(cnt, idx, path):
             visited[i] = False
 
 
-result = set()
-n, m = map(int, sys.stdin.readline().rstrip().split())
-arr = list(map(int, sys.stdin.readline().rstrip().split()))
-visited = defaultdict(bool)
+while True:
+    k, *arr = list(map(int, sys.stdin.readline().rstrip().split()))
+    visited = defaultdict(bool)
+    if k == 0:
+        break
 
-dfs(0, 0, [])
-for i in sorted(result):
-    print(*i)
-
-print(list(itertools.combinations(arr, m)))
-"""
-4개의 수를 입력받아 2개를 선택
-4 2 
-1 2 3 4
+    dfs(0, 0, [])
+    print()
 """
 ```
+[6603번: 로또](https://www.acmicpc.net/problem/6603)
