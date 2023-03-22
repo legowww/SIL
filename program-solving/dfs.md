@@ -134,10 +134,9 @@ def dfs(cnt, idx, path):
         return
 
     for i in range(idx, len(arr)):
-        if not visited[i]:
-            visited[i] = True
-            dfs(cnt+1, i+1, path + [arr[i]])
-            visited[i] = False
+        visited[i] = True
+        dfs(cnt+1, i+1, path + [arr[i]])
+        visited[i] = False
 
 
 while True:
