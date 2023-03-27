@@ -149,3 +149,14 @@ while True:
     print()
 ```
 [6603번: 로또](https://www.acmicpc.net/problem/6603)
+
+---
+### 8. 백트래킹 1799번 비숍
+```
+/ 대각선: 같은 대각선안에 모든 (i,j) 좌표값들은 i+j 값이 같다.
+\ 대각선: 같은 대각선안에 모든 (i,j) 좌표값들은 i-j 값이 같다.
+두 조건을 활용하여 룩업테이블을 참조한다.
+```
+https://www.acmicpc.net/problem/1799
+
+https://www.youtube.com/watch?v=Op0dtMMyeyg
