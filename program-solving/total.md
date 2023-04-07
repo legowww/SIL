@@ -79,6 +79,7 @@ for end in range(1, len(s)+1):
 ```
 
 [[리트코드] 424. Longest Repeating Character Replacement (velog.io)](https://velog.io/@legowww/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C-424.-Longest-Repeating-Character-Replacement) 
+
 [[프로그래머스] 연속된 부분 수열](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%97%B0%EC%86%8D%EB%90%9C-%EB%B6%80%EB%B6%84-%EC%88%98%EC%97%B4%EC%9D%98-%ED%95%A9)
 
 1. 윈도우의 범위를 `range(start, end)` 으로 설정하고 포인터로는 `end-1` 을 사용하여 문제를 풀었다. 이 방식을 사용하면 0번째 인덱스부터 조사하는 코드를 간결하게 작성할 수 있다. 예를 들자면 초기 상태인 start=0, end=1에서는 `d[s[0]] += 1` 이 연산된다. 
