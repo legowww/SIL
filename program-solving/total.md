@@ -103,9 +103,11 @@ for start in range(N):
     SUM -= lst[start]
 print(ans)
 ```
-[수들의 합](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다.
+[수들의 합2](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다.
 start를 for문의 변수로 사용할 경우 한칸씩 움직이는 슬라이딩 윈도우를 구현하려면 or문안에 while문을 사용하여 end를 이동시켜야 한다. 
 두 방식 모두 생각해놓고 문제에 따라 적합한 방식을 선택하자.
+
+-> [수들의 합2: 두 가지 풀이](https://velog.io/@legowww/백준-2003번-수들의-합2)
     
 
 ### 2-B
