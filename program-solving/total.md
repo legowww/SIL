@@ -88,6 +88,28 @@ for end in range(1, len(s)+1):
     start를 for문의 변수로 사용할 경우 한칸씩 움직이는 슬라이딩 윈도우를 구현하려면 or문안에 while문을 사용하여 end를 이동시켜야 한다.
     
     두 방식 모두 생각해놓고 문제에 따라 적합한 방식을 선택하자.
+
+
+```python
+import sys
+
+N, M = map(int, input().split())
+lst = list(map(int, sys.stdin.readline().rstrip().split()))
+
+ans = 0
+SUM = 0
+end = 0
+for start in range(N):
+    while SUM < M and end < N:
+        SUM += lst[end]
+        end += 1
+    if SUM == M:
+        ans += 1
+    SUM -= lst[start]
+print(ans)
+```
+[수들의 합](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다. 위의 방법과 함께 알아두자.   
+    
     
 
 ### 2-B
