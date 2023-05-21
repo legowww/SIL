@@ -83,12 +83,7 @@ for end in range(1, len(s)+1):
 [[프로그래머스] 연속된 부분 수열](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%97%B0%EC%86%8D%EB%90%9C-%EB%B6%80%EB%B6%84-%EC%88%98%EC%97%B4%EC%9D%98-%ED%95%A9)
 
 1. 윈도우의 범위를 `range(start, end)` 으로 설정하고 포인터로는 `end-1` 을 사용하여 문제를 풀었다. 이 방식을 사용하면 0번째 인덱스부터 조사하는 코드를 간결하게 작성할 수 있다. 예를 들자면 초기 상태인 start=0, end=1에서는 `d[s[0]] += 1` 이 연산된다. 
-2. end를 for문의 변수로 사용하고 조건문에 따라 start를 이동시키는 방식이다. 문제에서 슬라이딩 윈도우는 오른쪽으로 한칸씩 움직이는 경우가 대다수이기 때문에 start보다는 end의 이동이 더 빈번하게 발생하므로 end를 for문의 변수로 사용하는 편이 더 쉽게 코드를 짤 수 있다. start의 움직임은 조건문을 통해 처리한다.
-    
-    start를 for문의 변수로 사용할 경우 한칸씩 움직이는 슬라이딩 윈도우를 구현하려면 or문안에 while문을 사용하여 end를 이동시켜야 한다.
-    
-    두 방식 모두 생각해놓고 문제에 따라 적합한 방식을 선택하자.
-
+2. end를 for문의 변수로 사용하고 조건문에 따라 start를 이동시키는 방식이다.
 
 ```python
 import sys
@@ -108,8 +103,9 @@ for start in range(N):
     SUM -= lst[start]
 print(ans)
 ```
-[수들의 합](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다. 위의 방법과 함께 알아두자.   
-    
+[수들의 합](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다.
+start를 for문의 변수로 사용할 경우 한칸씩 움직이는 슬라이딩 윈도우를 구현하려면 or문안에 while문을 사용하여 end를 이동시켜야 한다. 
+두 방식 모두 생각해놓고 문제에 따라 적합한 방식을 선택하자.
     
 
 ### 2-B
