@@ -1,3 +1,4 @@
+### 2023/05
 [05/19 백준: 아기상어](https://velog.io/@legowww/백준-16236번-아기-상어)
 
 [05/19 백준: 오큰수](https://velog.io/@legowww/백준-17298번-오큰수)
@@ -19,3 +20,6 @@
 [05/29 백준: 수 고르기](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-2230%EB%B2%88-%EC%88%98-%EA%B3%A0%EB%A5%B4%EA%B8%B0) 
 
 [05/29 백준: 겹치는 건 싫어](https://velog.io/@legowww/%EB%B0%B1%EC%A4%80-20922%EB%B2%88-%EA%B2%B9%EC%B9%98%EB%8A%94-%EA%B1%B4-%EC%8B%AB%EC%96%B4)
+
+### 2023/06
+[06/03 백준: List of Unique Numbers](https://velog.io/@legowww/백준-13144번-List-of-Unique-Numbers)
