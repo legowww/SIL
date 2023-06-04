@@ -23,3 +23,5 @@
 
 ### 2023/06
 [06/03 백준: List of Unique Numbers](https://velog.io/@legowww/백준-13144번-List-of-Unique-Numbers)
+
+[06/04 백준: 가장 긴 짝수 연속한 부분 수열 (large)](https://velog.io/@legowww/백준-22862번-가장-긴-짝수-연속한-부분-수열large)
