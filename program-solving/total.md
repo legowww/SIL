@@ -63,7 +63,7 @@ while start < end:
     k = lst[end]+lst[start]
     ...
 ```
--[ https://velog.io/@legowww/백준-2230번-수-고르기](https://velog.io/@legowww/백준-20366번-같이-눈사람-만들래)
+- [https://velog.io/@legowww/백준-2230번-수-고르기](https://velog.io/@legowww/백준-20366번-같이-눈사람-만들래)
 ```python
 start=0
 end=0
