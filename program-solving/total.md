@@ -19,11 +19,7 @@ for i in range(1, length):
 ```
 
 # 1. Stack
-
-### 1-A
-
 괄호  `[` 으로 열고 `]` 닫는 문제에서 자주 사용되는 코드 형식
-
 ```python
 # https://velog.io/@legowww/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C-394.-Decode-String
 stack = []
@@ -43,9 +39,6 @@ for char in s:
 3. ['a'] 
 """ 
 ```
-
-### 1-B
-
 괄호 문제에서 시작 인덱스를 저장하는 코드 형식
 
 ```python
@@ -62,28 +55,23 @@ for idx, char in enumerate(exp):
 ---
 
 # 2. Sliding Window, Two Pointer
-
-### 2-A
-
+투 포인터 문제 구조
 ```python
-# 윈도우의 크기가 동적으로 변하는 문제
-# 윈도우의 범위: range(start, end)
-# 1부터 시작하여 end-1 인덱스를 참조하는 방식 알아둘 것
-
-start = 0
-for end in range(1, len(s)+1):
-	d[s[end-1]] += 1
-
-	if 조건:
-	    start += 1
+start=0
+end=N-1
+while start < end:
+    k = lst[end]+lst[start]
+    ...
 ```
-
-[[리트코드] 424. Longest Repeating Character Replacement (velog.io)](https://velog.io/@legowww/%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C-424.-Longest-Repeating-Character-Replacement) 
-
-[[프로그래머스] 연속된 부분 수열](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%97%B0%EC%86%8D%EB%90%9C-%EB%B6%80%EB%B6%84-%EC%88%98%EC%97%B4%EC%9D%98-%ED%95%A9)
-
-1. 윈도우의 범위를 `range(start, end)` 으로 설정하고 포인터로는 `end-1` 을 사용하여 문제를 풀었다. 이 방식을 사용하면 0번째 인덱스부터 조사하는 코드를 간결하게 작성할 수 있다. 예를 들자면 초기 상태인 start=0, end=1에서는 `d[s[0]] += 1` 이 연산된다. 
-2. end를 for문의 변수로 사용하고 조건문에 따라 start를 이동시키는 방식이다.
+-[ https://velog.io/@legowww/백준-2230번-수-고르기](https://velog.io/@legowww/백준-20366번-같이-눈사람-만들래)
+```python
+start=0
+end=0
+while start < N and end < N:
+    k = lst[start]-lst[end]
+    ...
+```
+- https://velog.io/@legowww/백준-2230번-수-고르기
 
 ```python
 import sys
@@ -103,26 +91,15 @@ for start in range(N):
     SUM -= lst[start]
 print(ans)
 ```
-[수들의 합2](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다.
-start를 for문의 변수로 사용할 경우 한칸씩 움직이는 슬라이딩 윈도우를 구현하려면 or문안에 while문을 사용하여 end를 이동시켜야 한다. 
-두 방식 모두 생각해놓고 문제에 따라 적합한 방식을 선택하자.
+- [수들의 합2](https://www.acmicpc.net/problem/2003https://www.acmicpc.net/problem/2003) 대표적인 투 포인터 문제이다.
+start를 for문의 변수로 사용할 경우 한칸씩 움직이는 슬라이딩 윈도우를 구현하려면  while문을 사용하여 end를 이동시켜야 한다. 
 
--> [수들의 합2: 두 가지 풀이](https://velog.io/@legowww/백준-2003번-수들의-합2)
-    
-
-### 2-B
-
-[[프로그래머스] 할인 행사 (velog.io)](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%95%A0%EC%9D%B8-%ED%96%89%EC%82%AC) 
-
+- [[프로그래머스] 할인 행사 (velog.io)](https://velog.io/@legowww/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%95%A0%EC%9D%B8-%ED%96%89%EC%82%AC) 
 슬라이딩 윈도우가 고정된 경우, 위의 문제처럼 0번째 인덱스에서 윈도우의 init 값을 설정하고 체크, 그리고 1번째 인덱스부터 윈도우를 슬라이딩 시킨다.
 
-### 2-C: `while`
-
-[코딩테스트 연습 - 택배 배달과 수거하기 | 프로그래머스 스쿨 (programmers.co.kr)](https://school.programmers.co.kr/learn/courses/30/lessons/150369)
-
+- [코딩테스트 연습 - 택배 배달과 수거하기 | 프로그래머스 스쿨 (programmers.co.kr)](https://school.programmers.co.kr/learn/courses/30/lessons/150369)
 1. `i ≥ 0` 를 통해 인덱스 참조 에러 방지
 2. `i -= 1` 를 통해 건너뛰고 싶은 원소들을 넘어가고 필요한 원소 앞으로 이동해 놓는다.
-
 ```python
 while i >= 0 and deliveries[i] == 0:
         i -= 1
@@ -131,9 +108,6 @@ while i >= 0 and deliveries[i] == 0:
 ---
 
 # 3. 원형 큐
-
-### 3-A
-
 [코딩테스트 연습 - 연속 부분 수열 합의 개수 | 프로그래머스 스쿨 (programmers.co.kr)](https://school.programmers.co.kr/learn/courses/30/lessons/131701)
 
 1. 선형적으로 접근하기 위해 원형 큐로 사용될 리스트를 **`*2`** 하여 사용한다. 
