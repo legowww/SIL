@@ -37,7 +37,7 @@ public Customer insert(Customer customer) {
     }
 ```
 
-# DataAccessException
+# JdbcTemplate 의 DataAccessException
 스프링의 JdbcTemplate 은 `SQLException` 의 에러 코드를 DB 별로 매핑해서 그에 해당하는 의미 있는 `DataAccessException` 의 서브클래스 중 하나로 전환해서 던져준다.
 스프링은 매핑하는 작업을 간소화시키기 위헤. DB 별로 에러 코드를  매핑해주는 파일을 기본적으로 가지고 있다.
 
