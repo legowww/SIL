@@ -109,7 +109,6 @@ def dfs(cnt, path):
             dfs(cnt+1, path + [arr[i]])
             visited[i] = False
 
-
 result = set()
 n, m = map(int, sys.stdin.readline().rstrip().split())
 arr = list(map(int, sys.stdin.readline().rstrip().split()))
@@ -135,7 +134,6 @@ def dfs(cnt, idx, path):
 
     for i in range(idx, len(arr)):
         dfs(cnt+1, i+1, path + [arr[i]])
-
 
 while True:
     k, *arr = list(map(int, sys.stdin.readline().rstrip().split()))
