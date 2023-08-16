@@ -127,13 +127,13 @@ import sys
 from collections import defaultdict
 
 
-def dfs(cnt, idx, path):
-    if cnt == 6:
+def dfs(idx, path):
+    if len(path) == 6:
         print(*path)
         return
 
     for i in range(idx, len(arr)):
-        dfs(cnt+1, i+1, path + [arr[i]])
+        dfs(i+1, path + [arr[i]])
 
 while True:
     k, *arr = list(map(int, sys.stdin.readline().rstrip().split()))
@@ -141,7 +141,7 @@ while True:
     if k == 0:
         break
 
-    dfs(0, 0, [])
+    dfs(0, [])
     print()
 ```
 [6603번: 로또](https://www.acmicpc.net/problem/6603)
