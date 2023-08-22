@@ -34,7 +34,7 @@ login.login() //동일한 로그인 작업 수행가능
 인터페이스를 분리하는 것이 좋다.
 인터페이스를 분리할 경우 책임이 나눠지기 때문에 변경에 강한 코드를 작성하게 된다.
 구현체는 꼭 필요한 메서드에만 의존해야 한다. 이용하지 않는 메서드에는 의존하지 않는다.
-```
+```java
 interface LoginAndLogout {} //로그인 기능만 사용하고 싶어도 로그아웃 메서드까지 override 해야함. 
 ->
 interface Login {}
@@ -45,7 +45,7 @@ interface Logout {}
 WebService 는 웹 관련 기능을 수행하는 책임을 가지는 고수준 모듈이다.
 고수준 모듈은 여러 하위 기능으로 나눌 수 있다(로그인, 로그아웃 등)
 저수준 모듈은 하위 기능을 실제로 구현(NaverLogin)한 것이다.
-```
+```java
 //고수준모듈: WebService, Login
 //저수준모듈: NaverLogin
 class WebService {
@@ -57,7 +57,7 @@ class WebService {
 (고수준모듈에 의존하면 인터페이스/구현 분리 덕분에 구현 변경에는 영향받지 않는다.)
 DIP
 -> 의존성의 방향은 항상 고수준모듈로 향해야(=의존해야) 한다.
-```
+```java
 class WebService {
     private Login login; 
 }
