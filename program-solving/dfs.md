@@ -146,6 +146,30 @@ while True:
 ```
 [6603번: 로또](https://www.acmicpc.net/problem/6603)
 
+#### 중복 조합
+```python
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        def dfs(idx, path, S):
+            if S > target:
+                return
+            
+            if S == target:
+                result.append(path)
+                return 
+
+            for i in range(idx, len(candidates)):
+                dfs(i, path + [candidates[i]], S+candidates[i]) 
+
+
+        result = []
+        dfs(0, [], 0)
+
+        return result
+```
+`i+1`이 아닌 `i` 를 사용했다.
+- https://leetcode.com/problems/combination-sum/submissions/
+
 ---
 ### 8. 백트래킹(체스판)
 ```
