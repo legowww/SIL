@@ -1,5 +1,54 @@
 # DFS
 
+### 0. while + dfs
+```python
+class Solution:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:        
+        d = defaultdict(list)
+        for u, v in tickets:
+            d[u].append(v)
+
+        for u in d:
+            d[u].sort(reverse=True)
+
+        def dfs(src):
+            while d[src]:
+                dest = d[src].pop()
+                dfs(dest)
+            result.append(src)
+        
+        
+        result = []
+        dfs('JFK')
+
+        return result[::-1]
+
+"""
+이 문제는 무조건 방문하는 경우만 주어지므로 예외를 생각하지 말자.
+
+방문한 src 노드가 다른 노드로의 출구가 없는 경우라면, 이 src 노드를 마지막에 방문해야만한다.
+`[A,B],[B,C],[C,D]` 라면 A->B->C->D 순으로 방문할 것이다.
+
+dfs 호출 특성에 맞게 마지막에 방문한 노드먼저 result 에 추가할 수 밖에 없으므로
+마지막에 리버스 연산을 수행해준다.
+
+
+                     dfs(D) D 추가
+              dfs(C) dfs(C) dfs(C) C 추가
+       dfs(B) dfs(B) dfs(B) dfs(B) dfs(B) B 추가
+dfs(A) dfs(A) dfs(A) dfs(A) dfs(A) dfs(A) dfs(A) A추가
+
+lst = [D, C, B, A]
+lst[::-1] = [A, B, C, D]
+"""    
+```
+- https://leetcode.com/problems/reconstruct-itinerary/
+
+
+
+
+
+
 ### 1. path 안에 중복 없이 원소 저장하기
 https://www.youtube.com/watch?v=exwk905In0U&list=PLodgw23vNd_U66omABrprSwJBZhKPFGMM&index=17 강의 참조
 ```python
