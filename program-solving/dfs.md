@@ -166,8 +166,19 @@ class Solution:
         dfs(0, [], 0)
 
         return result
+
+1. 
+조합 문제이지만 dfs(i+1...) 이 아닌 dfs(i...) 방식이다.
+중복 조합이기 때문에 현재 i 를 계속하여 사용할 수 있기 때문이다.
+
+2.
+c = [2, 3, 5]
+for i in range(idx, len(candidates))
+
+i=0 -> [2, 3, 5] 사용하여 만들 수 있는 모든 경우
+i=1 -> [3, 5] 사용하여 만들 수 있는 모든 경우
+for 문에서 매번 i=0부터 시작할 필요 없이 idx 에서 시작해도 모든 경우를 탐색할 수 있다.
 ```
-`i+1`이 아닌 `i` 를 사용했다.
 - https://leetcode.com/problems/combination-sum/submissions/
 
 ---
