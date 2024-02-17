@@ -1,4 +1,41 @@
-`CORS`: 서버 자원을 보호하기 위한 규칙
+```
+# CORS
+다른 출처와 자원을 공유할 수 있는 방법을 정의한 것입니다.
+웹브라우저는 기본적으로 단일출처정책을 사용하기때문에 다른 출처와 자원을 공유하면 CORS 에러를 발생시킵니다.
+이를 해결하기위해 서버는 access-control-allow (orign, method, hrader) 헤더를 설정하여
+자원 공유를 허용할 수 있습니다.
+
+	출처?
+		>> 프로토콜, 호스트, 포트로 식별
+
+	보안?
+		>> XSS, CSRF 등의 공격으로 토큰 혹은 쿠키가 유출될 수 있기 때문에 SOP 를 사용합니다.
+			- 스크립트 공격
+			- 희생자의 브라우저를 이용한 대리 공격
+
+
+1. 웹브라우저는 출처를 오리진 헤더에 추가             <웹브라우저가 origin 헤더를 생성해줌>
+   서버는 허용된 오리진 목록에 출처를 추가해 놓음
+2. 웹브라우저는 서버의 응답 access-control-allow-??? 을 읽은 후 내 출처가 있다면 자원공유를 허용함
+허용하지 않을 경우 CORS 에러 발생합니다.
+
+
+
+## 단순요청
+- GET, POST, HEAD 메서드
+- Accept, Aceept-Language, Content-Language 헤더 
+- Content-Type: 텍스트플레인, 애플리케이션유알엘엔코디드 
+위 조건을 충족하면 예비요청 없이 통신이 가능하다.
+
+## 예비요청
+1. 웹브라우저는 OPTIONS 메서드로 예비요청 전송
+2. 서버는 access-control-allow-(origin, method, header) 응답
+3. 웹브라우저는 확인 후 허용
+
+	매번 OPTIONS 요청을 해야해?
+	 >> max-age 설정을 통해 예비요청을 캐싱할 수 있다.
+
+```
 
 `Origin`: URL 의 프로토콜/호스트/포트가 같으면 출처가 같다고 할 수 있다.
 
@@ -32,19 +69,25 @@ XSS, CSRF 같은 공격이 발생하여 쿠키나 토큰같은 개인정보가 �
 ### 클라이언트-서버 Header
 
 1. 
-`Origin`: http://localhost:3000 `Access-Control-Allow-Origin`: http://localhost:3000 
+`Origin`: http://localhost:3000
+
+`Access-Control-Allow-Origin`: http://localhost:3000 
 
 웹 브라우저는 요청 HTTP 의 Origin 값이 응답 HTTP 의 Access-Control-Allow-Origin 헤더에 존재할 경우 교차 출처 요청을 허용한다.
 
 
 2. 
-`Access-Control-Request-Headers`: Foo `Access-Control-Allow-Headers`: Foo
+`Access-Control-Request-Headers`: Foo
+
+`Access-Control-Allow-Headers`: Foo
 
 웹 브라우저는 예비 요청의 Access-Control-Request-Headers 헤더에 사용된 헤더가 응답 HTTP 의 Access-Control-Allow-Headers 에 존재할 경우 교차 출처 요청을 허용한다.
 
 
 4. 
-`Access-Control-Request-Methods`: PUT `Access-Control-Allow-Methods`: PUT
+`Access-Control-Request-Methods`: PUT
+
+`Access-Control-Allow-Methods`: PUT
 
 웹 브라우저는 예비 요청의 Access-Control-Request-Methods 헤더에 사용된 메서드가 응답 HTTP 의 Access-Control-Allow-Method 에 존재할 경우 교차 출처 요청을 허용한다.
 
@@ -61,8 +104,8 @@ XSS, CSRF 같은 공격이 발생하여 쿠키나 토큰같은 개인정보가 �
     - Accept
     - Accept-Language
     - Content-Language
-    - Content-Type: `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain` Content-Type
-    - 
+    - Content-Type: `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`
+ 
 위 조건을 충족할 경우 예비 요청을 사용하지 않고도 CORS 통신이 가능하다. 
 
 `application/json` 을 허용하지 않아 대부분의 요청은 예비 요청을 사용한다.
