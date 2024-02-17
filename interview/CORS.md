@@ -15,17 +15,18 @@ XSS, CSRF 같은 공격이 발생하여 쿠키나 토큰같은 개인정보가 �
 
 ---
 ### CORS
-CORS 는 웹 브라우저의 `SOP` 를 위반하기 때문에 발생하는 현상이다. 
+```
+다른 출처와 자원을 공유할 수 있는 방법을 정의한 것입니다.
+웹브라우저는 기본적으로 단일출처정책을 사용하기때문에 다른 출처와 자원을 공유하면 CORS 에러가 발생합니다.
+이를 해결하기위해 서버측에서 access control allow (orign, method, hrader) 헤더를 설정하여
+자원 공유를 허용할 수 있습니다.
+```
 
 서버는 요청에 대해 정상적으로 응답을 해주지만 웹 브라우저 자체적으로 에러를 발생시킨다.
-
 
 웹 브라우저에서 출처가 `localhost:3000` 인 HTML 파일을 통해 `localhost:4000` 의 자원을 요청할 경우 CORS 에러가 발생한다. 
 
 하지만 `localhost:3000` 서버에서 `localhost:4000` 에 CURL 요청을 보낼 경우에는 정상적으로 응답이 반환된다. 
-
-
-
 
 ---
 ### 클라이언트-서버 Header
@@ -38,15 +39,18 @@ CORS 는 웹 브라우저의 `SOP` 를 위반하기 때문에 발생하는 현�
 
 2. 
 `Access-Control-Request-Headers`: Foo `Access-Control-Allow-Headers`: Foo
+
 웹 브라우저는 예비 요청의 Access-Control-Request-Headers 헤더에 사용된 헤더가 응답 HTTP 의 Access-Control-Allow-Headers 에 존재할 경우 교차 출처 요청을 허용한다.
 
 
-3. 
+4. 
 `Access-Control-Request-Methods`: PUT `Access-Control-Allow-Methods`: PUT
+
 웹 브라우저는 예비 요청의 Access-Control-Request-Methods 헤더에 사용된 메서드가 응답 HTTP 의 Access-Control-Allow-Method 에 존재할 경우 교차 출처 요청을 허용한다.
 
-4. 
+6. 
 `Access-Control-Max-Age`: 5
+
 5초 안에 다시 요청하면 예비 요청이 발생하지 않는다. 예비 요청을 캐싱하는 기능을 수행한다.
 
 ---
@@ -57,13 +61,11 @@ CORS 는 웹 브라우저의 `SOP` 를 위반하기 때문에 발생하는 현�
     - Accept
     - Accept-Language
     - Content-Language
-    - Content-Type
-
+    - Content-Type: `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain` Content-Type
+    - 
 위 조건을 충족할 경우 예비 요청을 사용하지 않고도 CORS 통신이 가능하다. 
 
-하지만 `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain` Content-Type 만을 허용하기 때문에 `application/json` 을 사용하는 대부분의 요청에서는 사용될 수 없다. 
-
-따라서 대부분의 요청은 예비 요청을 사용한다고 이해하면 된다. 
+`application/json` 을 허용하지 않아 대부분의 요청은 예비 요청을 사용한다.
 
 ---
 ### 예비 요청
