@@ -123,6 +123,7 @@ Access-Control-Request-Headers, Access-Control-Request-Methods 등의 헤더를 
 
 ---
 > REF
+- https://aws.amazon.com/ko/what-is/cross-origin-resource-sharing/
 - https://www.youtube.com/watch?v=zA_YAuwPrcA&t=1025s
 - https://jeonghwan-kim.github.io/2023/12/12/cors
 - https://inpa.tistory.com/entry/WEB-📚-CORS-💯-정리-해결-방법-👏#
