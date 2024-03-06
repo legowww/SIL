@@ -241,3 +241,37 @@ for 문에서 매번 i=0부터 시작할 필요 없이 idx 에서 시작해도 �
 - [1799번: 비숍](https://www.acmicpc.net/problem/1799)
 - [9663번: N-QUEEN](https://www.acmicpc.net/problem/9663)
 - https://www.youtube.com/watch?v=Op0dtMMyeyg
+
+### 9. 2차원 좌표에 N개의 사물을 설치하는 문제
+
+```
+1. 조건이 작으면 놓을 수 있는 장소를 모두 확인한 후, combination으로 각 케이스 수 구하기
+    예시) 연구소: https://www.acmicpc.net/problem/14502
+
+
+2.
+    예시2) 사다리조작: https://www.acmicpc.net/problem/15684
+
+	for i in range(n*h):
+	    q, r = divmod(i, n)
+	    print(i, q, r) 
+
+	- n = 열
+	- h = 행
+	- n*h = 열*행 = 총 원소 개수
+
+
+	n=5, h=6	
+	[1, 0, 0, 0, 0]
+	[0, 0, 1, 0, 0]
+	[0, 1, 0, 0, 0]
+	[0, 0, 0, 0, 0]
+	[1, 0, 0, 1, 0]
+	[0, 0, 0, 0, 0]
+
+	0 1 2 3 4 
+	5 6 7 8 9
+
+	graph[0][4] = 0, 4 = divmod(4, 5) = 4
+	graph[1][4] = 1, 4 = divmod(9, 5) = 9
+```
